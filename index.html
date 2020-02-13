@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Todo.js</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="dist/css/normalize.css">
+    <link rel="stylesheet" href="src/assets/css/app.css">
+</head>
+
+<body>
+    <main id="app">
+        <header>
+            <h1>spa.js</h1>
+        </header>
+
+        <ul id="user_list">
+
+            <li class="user_list--item">
+                <label class="title">Игорь</label>
+                <input class="textfield" type="text">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <li class="user_list--item">
+                <label class="title">89991258567</label>
+                <input class="textfield" type="tel">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <hr>
+
+            <li class="user_list--item">
+                <label class="title">Иван</label>
+                <input class="textfield" type="text">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <li class="user_list--item">
+                <label class="title">+79991234567</label>
+                <input class="textfield" type="tel">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <hr>
+
+            <li class="user_list--item">
+                <label class="title">Петр</label>
+                <input class="textfield" type="text">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <li class="user_list--item">
+                <label class="title">+73697896321</label>
+                <input class="textfield" type="tel">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <hr>
+
+            <li class="user_list--item">
+                <label class="title">Ольга</label>
+                <input class="textfield" type="text">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <li class="user_list--item">
+                <label class="title">09861237896</label>
+                <input class="textfield" type="tel">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <hr>
+
+
+        </ul>
+
+        <form id="user_form">
+            <p class="alarm"></p>
+            <p class="user_form--title">Пожалуйста, введите свое имя и номер телефона:</p>
+            <input id="input_name" type="text" placeholder="пример: Иван" data-rule='name'>
+            <input id="input_tel" type="tel" placeholder="пример: +79991234567" data-rule='number'>
+            <button id="btn_add" type="submit">добавить</button>
+        </form>
+    </main>
+
+    <script src="src/assets/js/app.js"></script>
+</body>
+
+</html>
