@@ -18,8 +18,7 @@ function addUserItem(event) {
     <input class="textfield" type="tel">
     <button class="edit">редактировать</button>
     <button class="delete">удалить</button>
-</li>
-<hr>`
+</li>`
 
         inputName.classList.remove('invalid');
         inputName.classList.remove('valid');
@@ -48,6 +47,7 @@ const inpRule = userForm.querySelectorAll('input[data-rule]');
 let check; // регулярное выражение
 
 // проверка
+
 for (let input of inpRule) {
     input.addEventListener('blur', function () {
         let rule = this.dataset.rule;
