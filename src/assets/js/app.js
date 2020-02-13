@@ -1,10 +1,42 @@
 const userList = document.getElementById('user_list');
 const userItems = userList.querySelectorAll('.user_list--item');
+const inpRule = document.querySelectorAll('input[data-rule]'); // получил все input data-rule
+let check; // регулярное выражение
+
+// проверка
+function validation() {
+    let rule = this.dataset.rule;
+    let value = this.value;
+
+    switch (rule) {
+        case 'name':
+            check = /\D/.test(value); // регулярка для имени
+            break;
+        case 'number':
+            check = /^[\+|\-]?\d+$/.test(value); // регулфрка для номера
+            break;
+    }
+
+    this.classList.remove('invalid');
+    this.classList.remove('valid');
+
+    if (check) {
+        this.classList.add('valid');
+    } else {
+        this.classList.add('invalid');
+    }
+}
+
+
+for (let input of inpRule) {
+    input.addEventListener('blur', validation)
+}
+
 
 function addUserItem(event) {
     event.preventDefault();
     let name = inputName.value.trim();
-    let tel = inputTel.value;
+    let tel = inputTel.value.trim();
 
     if (check && name !== '' && tel !== '') {
         userList.innerHTML += `<li class="user_list--item">
@@ -15,10 +47,17 @@ function addUserItem(event) {
 </li>
 <li class="user_list--item">
     <label class="title">${tel}</label>
-    <input class="textfield" type="tel">
+    <input class="textfield" type="tel" data-rule='number' placeholder="пример: +79991234567">
     <button class="edit">редактировать</button>
     <button class="delete">удалить</button>
 </li>`
+
+        // проверка
+        const inpRule = document.querySelectorAll('input[data-rule]'); // получил все input data-rule
+
+        for (let input of inpRule) {
+            input.addEventListener('blur', validation)
+        }
 
         inputName.classList.remove('invalid');
         inputName.classList.remove('valid');
@@ -33,43 +72,13 @@ function addUserItem(event) {
         userForm.classList.add('invalid');
         userForm.querySelector('.alarm').textContent = 'Пожалуйста, правильно заполните форму'
     }
+
 }
 
-
 const userForm = document.getElementById('user_form');
-
 const inputName = userForm.querySelector('#input_name');
 const inputTel = userForm.querySelector('#input_tel');
 const btnAdd = userForm.querySelector('#btn_add');
-
-const inpRule = document.querySelectorAll('input[data-rule]'); // получил все input data-rule
-let check; // регулярное выражение
-
-// проверка
-for (let input of inpRule) {
-    input.addEventListener('blur', function () {
-        let rule = this.dataset.rule;
-        let value = this.value;
-
-        switch (rule) {
-            case 'name':
-                check = /\D/.test(value); // регулярка для имени
-                break;
-            case 'number':
-                check = /^[\+|\-]?\d+$/.test(value); // регулфрка для номера
-                break;
-        }
-
-        this.classList.remove('invalid');
-        this.classList.remove('valid');
-
-        if (check) {
-            this.classList.add('valid');
-        } else {
-            this.classList.add('invalid');
-        }
-    })
-}
 
 // функция удаляет предупреждения не валидного заполнения формы userForm
 function notAlarm() {
@@ -98,7 +107,7 @@ function editUserItem() {
     const editInput = userItem.querySelector('.textfield');
     const isEditing = userItem.classList.contains('editing');
     let name = editInput.value.trim();
-    //let tel = inputTel.value;
+
 
 
     if (isEditing) {
