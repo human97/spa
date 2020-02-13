@@ -9,7 +9,7 @@ function addUserItem(event) {
     if (check && name !== '' && tel !== '') {
         userList.innerHTML += `<li class="user_list--item">
     <label class="title">${name}</label>
-    <input class="textfield" type="text">
+    <input class="textfield" type="text" data-rule='name' placeholder="пример: Иван">
     <button class="edit">редактировать</button>
     <button class="delete">удалить</button>
 </li>
@@ -41,13 +41,11 @@ const userForm = document.getElementById('user_form');
 const inputName = userForm.querySelector('#input_name');
 const inputTel = userForm.querySelector('#input_tel');
 const btnAdd = userForm.querySelector('#btn_add');
-const inpRule = userForm.querySelectorAll('input[data-rule]');
 
-
+const inpRule = document.querySelectorAll('input[data-rule]'); // получил все input data-rule
 let check; // регулярное выражение
 
 // проверка
-
 for (let input of inpRule) {
     input.addEventListener('blur', function () {
         let rule = this.dataset.rule;
@@ -55,10 +53,10 @@ for (let input of inpRule) {
 
         switch (rule) {
             case 'name':
-                check = /\D/.test(value);
+                check = /\D/.test(value); // регулярка для имени
                 break;
             case 'number':
-                check = /^[\+|\-]?\d+$/.test(value);
+                check = /^[\+|\-]?\d+$/.test(value); // регулфрка для номера
                 break;
         }
 
@@ -84,7 +82,6 @@ function notAlarm() {
 inpRule.forEach(e => e.onclick = notAlarm) // удаление предупреждений
 
 
-
 //
 function bindEvents(btnItem) {
     const editButton = btnItem.querySelector('.edit');
@@ -94,22 +91,31 @@ function bindEvents(btnItem) {
     deleteButton.addEventListener('click', deleteUserItem);
 }
 
+
 function editUserItem() {
     const userItem = this.parentNode;
     const title = userItem.querySelector('.title');
     const editInput = userItem.querySelector('.textfield');
     const isEditing = userItem.classList.contains('editing');
+    let name = editInput.value.trim();
+    //let tel = inputTel.value;
+
 
     if (isEditing) {
-        title.innerText = editInput.value;
+        if (check && name !== '') {
+            title.innerText = editInput.value;
+        }
         this.innerText = 'редактировать';
     } else {
+        editInput.classList.remove('invalid');
+        editInput.classList.remove('valid');
         editInput.value = title.innerText;
         this.innerText = 'сохранить';
     }
 
     userItem.classList.toggle('editing');
 }
+
 
 function deleteUserItem() {
     const userItem = this.parentNode;

@@ -20,52 +20,52 @@
 
             <li class="user_list--item">
                 <label class="title">Игорь</label>
-                <input class="textfield" type="text">
+                <input class="textfield" type="text" data-rule='name' placeholder="пример: Иван">
                 <button class="edit">редактировать</button>
                 <button class="delete">удалить</button>
             </li>
             <li class="user_list--item">
-                <label class="title">89991258567</label>
-                <input class="textfield" type="tel">
-                <button class="edit">редактировать</button>
-                <button class="delete">удалить</button>
-            </li>
-
-            <li class="user_list--item">
-                <label class="title">Иван</label>
-                <input class="textfield" type="text">
-                <button class="edit">редактировать</button>
-                <button class="delete">удалить</button>
-            </li>
-            <li class="user_list--item">
-                <label class="title">+79991234567</label>
-                <input class="textfield" type="tel">
+                <label class="title number" data-rule='number'>89991258567</label>
+                <input class="textfield" type="tel" data-rule='number' placeholder="пример: +79991234567">
                 <button class="edit">редактировать</button>
                 <button class="delete">удалить</button>
             </li>
 
             <li class="user_list--item">
-                <label class="title">Петр</label>
+                <label class="title name" data-rule='name' placeholder="пример: Иван">Иван</label>
                 <input class="textfield" type="text">
                 <button class="edit">редактировать</button>
                 <button class="delete">удалить</button>
             </li>
             <li class="user_list--item">
-                <label class="title">+73697896321</label>
-                <input class="textfield" type="tel">
+                <label class="title number" data-rule='number'>+79991234567</label>
+                <input class="textfield" type="tel" data-rule='number' placeholder="пример: +79991234567">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+
+            <li class="user_list--item">
+                <label class="title name">Петр</label>
+                <input class="textfield" type="text" data-rule='name' placeholder="пример: Иван">
+                <button class="edit">редактировать</button>
+                <button class="delete">удалить</button>
+            </li>
+            <li class="user_list--item">
+                <label class="title number">+73697896321</label>
+                <input class="textfield" type="tel" data-rule='number' placeholder="пример: +79991234567">
                 <button class="edit">редактировать</button>
                 <button class="delete">удалить</button>
             </li>
 
             <li class="user_list--item">
                 <label class="title">Ольга</label>
-                <input class="textfield" type="text">
+                <input class="textfield" type="text" data-rule='name' placeholder="пример: Иван">
                 <button class="edit">редактировать</button>
                 <button class="delete">удалить</button>
             </li>
             <li class="user_list--item">
                 <label class="title">09861237896</label>
-                <input class="textfield" type="tel">
+                <input class="textfield" type="tel" data-rule='number' placeholder="пример: +79991234567">
                 <button class="edit">редактировать</button>
                 <button class="delete">удалить</button>
             </li>
@@ -75,8 +75,8 @@
         <form id="user_form">
             <p class="alarm"></p>
             <p class="user_form--title">Пожалуйста, введите свое имя и номер телефона:</p>
-            <input id="input_name" type="text" placeholder="пример: Иван" data-rule='name'>
-            <input id="input_tel" type="tel" placeholder="пример: +79991234567" data-rule='number'>
+            <input id="input_name" type="text" data-rule='name' placeholder="пример: Иван">
+            <input id="input_tel" type="tel" data-rule='number' placeholder="пример: +79991234567">
             <button id="btn_add" type="submit">добавить</button>
         </form>
     </main>
